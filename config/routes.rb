@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :users do
-    resources :posts, only: [:new, :create]
+  concern :my_user do
+    resources :users
   end
 
-  resources :posts, only: [:show, :edit, :update, :destroy], shallow: true
+  resources :posts, concerns: :my_user
 root 'posts#index'
 end
