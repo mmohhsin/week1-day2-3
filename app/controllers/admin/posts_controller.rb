@@ -25,7 +25,7 @@ module Admin
       @post = Post.find(params[:id])
       @post.destroy
 
-      redirect_to admin_posts_path, notice: 'Post was successfully deleted.'
+      redirect_to posts_path, notice: 'Post was successfully deleted.'
     end
 
     private
