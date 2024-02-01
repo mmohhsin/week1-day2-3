@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  scope module: 'admin' do
+  sc 'admin' do
     resources :posts
   end
+  resources :users
 root 'posts#index'
 end
