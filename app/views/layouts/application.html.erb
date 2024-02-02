@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ControllerAndRoutes</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
-
-  <body>
+<head>
+  <title>Sidebar Template</title>
+</head>
+<body>
+  <header>
+    <h1>App Website</h1>  
+    <ul>
+      <li>Menu 1</li>
+      <li>Menu 2</li>
+      <li>Menu 3</li>
+      <li>Menu 4</li>
+    </ul>
+  </header>
+  <main>
     <%= yield %>
-  </body>
+  </main>
+  <footer>
+    <ul>
+      <li>About us</li>
+      <li>Team</li>
+      <li>Terms and conditions</li>
+    </ul>
+  </footer>
+</body>
 </html>

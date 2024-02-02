@@ -1,7 +1,7 @@
-module Admin
-  class PostsController < ApplicationController
+class PostsController < ApplicationController
     def index
       @posts = Post.all.order("created_at DESC")
+      render layout: "sidebar"
     end
 
     def new
@@ -33,4 +33,3 @@ module Admin
       params.require(:post).permit(:name, :body)
     end
   end
-end
