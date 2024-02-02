@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
 
-  concern :my_user do
-    resources :users
-  end
+    resources :users do
+      member do
+        get :personal_details
+      end
 
-  resources :posts, concerns: :my_user
-root 'posts#index'
+      collection do
+        get :active
+      end
+
+    end
+  root 'posts#index'
 end
