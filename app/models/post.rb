@@ -1,9 +1,11 @@
 class Post < ApplicationRecord
   validates_presence_of :name
-  before_create :before_create_callback
+  around_create :around_create_callback
 
   private
-  def before_create_callback
-    self.name ||= "Untitled" if name.blank?
+  def around_create_callback
+    self.body = "This post is created: #{self.body}" if body.present?
+    yield
+    self.body = "Post created successfully!" if body.present?
   end
 end
