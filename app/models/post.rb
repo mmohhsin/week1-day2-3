@@ -1,11 +1,9 @@
 class Post < ApplicationRecord
-  validates_presence_of :name
-  around_create :around_create_callback
+  after_initialize do |post|
+    puts "You have initialized an object!"
+  end
 
-  private
-  def around_create_callback
-    self.body = "This post is created: #{self.body}" if body.present?
-    yield
-    self.body = "Post created successfully!" if body.present?
+  after_find do |post|
+    puts "You have found an object!"
   end
 end
