@@ -1,12 +1,9 @@
 class Post < ApplicationRecord
-  before_validation :capitalize_name
-
-  validates :name, presence: true
-  validates :body, presence: true
+  validates_presence_of :name
+  after_validation :set_status
 
   private
-
-  def capitalize_name
-    self.name = name.capitalize if name.present?
+  def set_status
+    self.name = errors.empty?
   end
 end
