@@ -1,9 +1,10 @@
 class Post < ApplicationRecord
   validates_presence_of :name
-  after_validation :set_status
+  before_save :before_save_callback
+
 
   private
-  def set_status
-    self.name = errors.empty?
+  def before_save_callback
+    self.name = self.name.upcase if name.present?
   end
 end
