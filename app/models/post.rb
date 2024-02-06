@@ -1,10 +1,12 @@
 class Post < ApplicationRecord
   validates_presence_of :name
-  before_save :before_save_callback
+  around_save :around_save_callback
 
 
   private
-  def before_save_callback
-    self.name = self.name.upcase if name.present?
+  def around_save_callback
+    self.body = self.body.downcase if body.present?
+    yield
+    self.body = self.body.capitalize if body.present?
   end
 end
