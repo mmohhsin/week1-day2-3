@@ -1,5 +1,9 @@
 class Post < ApplicationRecord
-  after_touch do |post|
-    puts "You have touched an object"
+  before_save :before_save_callback
+  private
+
+  def before_save_callback
+    puts "Before save callback executed"
+    throw :abort if body.blank?
   end
 end
