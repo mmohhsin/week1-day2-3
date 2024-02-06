@@ -1,9 +1,13 @@
 class Post < ApplicationRecord
-  before_save :before_save_callback
+  before_save :ensure_body_present, if: :name_present?
+
   private
 
-  def before_save_callback
-    puts "Before save callback executed"
-    throw :abort if body.blank?
+  def ensure_body_present
+    self.body ||= "Default body" if body.blank?
+  end
+
+  def name_present?
+    name.present?
   end
 end
